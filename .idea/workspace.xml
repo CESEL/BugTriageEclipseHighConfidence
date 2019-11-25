@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="89b9f016-4cbc-47ec-aae3-04cc68869eff" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_collection/bug_report_collector_xmlrpc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1054">
+              <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="139">
+                <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ML_Text_Categorical/classification_text.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>month</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/stacktrace_processing/infozilla.py" />
+        <option value="$PROJECT_DIR$/stacktrace_processing/xml_parser.py" />
+        <option value="$PROJECT_DIR$/stacktrace_processing/package_repo_path_collector.py" />
+        <option value="$PROJECT_DIR$/stacktrace_processing/source_code_path_in_repo_collector.py" />
+        <option value="$PROJECT_DIR$/FixerCache/past_bug_history_collector.py" />
+        <option value="$PROJECT_DIR$/FixerCache/prediction_component_cache.py" />
+        <option value="$PROJECT_DIR$/ML_Text_Categorical/classification_traditional_active_devs.py" />
+        <option value="$PROJECT_DIR$/ML_Text_Categorical/classification_text_component.py" />
+        <option value="$PROJECT_DIR$/ML_Text_Categorical/classification_traditional_Text.py" />
+        <option value="$PROJECT_DIR$/ML_Text_Categorical/classification_text_component_high_confidence.py" />
+        <option value="$PROJECT_DIR$/ML_Text_Categorical/classification_text_component_all_devs.py" />
+        <option value="$PROJECT_DIR$/ensemble/classification_ensemble.py" />
+        <option value="$PROJECT_DIR$/high_confidence_prediction/classification_high_confidence.py" />
+        <option value="$PROJECT_DIR$/data_collection/bug_report_collector_xmlrpc.py" />
+        <option value="$PROJECT_DIR$/readme.md" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1347" />
+    <option name="height" value="690" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BugTriaggingEclipse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BugTriaggingEclipse" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BugTriaggingEclipse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BugTriaggingEclipse" type="462c0819:PsiDirectoryNode" />
+              <item name="ensemble" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BugTriaggingEclipse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BugTriaggingEclipse" type="462c0819:PsiDirectoryNode" />
+              <item name="FixerCache" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BugTriaggingEclipse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BugTriaggingEclipse" type="462c0819:PsiDirectoryNode" />
+              <item name="high_confidence_prediction" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BugTriaggingEclipse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BugTriaggingEclipse" type="462c0819:PsiDirectoryNode" />
+              <item name="ML_Text_Categorical" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BugTriaggingEclipse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BugTriaggingEclipse" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BugTriaggingEclipse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BugTriaggingEclipse" type="462c0819:PsiDirectoryNode" />
+              <item name="stacktrace_processing" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\BugTriaggingEclipse\high_confidence_prediction" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\BugTriaggingEclipse\data_collection" />
+      <recent name="C:\Projects\BugTriaggingEclipse\high_confidence_prediction" />
+      <recent name="C:\Projects\BugTriaggingEclipse\ensemble" />
+      <recent name="C:\Projects\BugTriaggingEclipse\ML_Text_Categorical" />
+      <recent name="C:\Projects\BugTriaggingEclipse\FixerCache" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="89b9f016-4cbc-47ec-aae3-04cc68869eff" name="Default Changelist" comment="" />
+      <created>1574613850942</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574613850942</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17011128" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/stacktrace_processing/infozilla.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/jdt.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stacktrace_processing/xml_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stacktrace_processing/source_code_path_in_repo_collector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stacktrace_processing/prediction_by_msr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2864" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FixerCache/prediction_fixer_cache.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="50" column="66" selection-start-line="50" selection-start-column="66" selection-end-line="50" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FixerCache/past_bug_history_collector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="68" column="72" selection-start-line="68" selection-start-column="67" selection-end-line="68" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ML_Text_Categorical/classification_text_component.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3319">
+          <caret line="224" selection-start-line="224" selection-end-line="224" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ML_Text_Categorical/classification_text_component_all_devs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1328">
+          <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ensemble/classification_ensemble.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/high_confidence_prediction/classification_high_confidence.py" />
+    <entry file="file://$PROJECT_DIR$/high_confidence_prediction/classification_text_component_high_confidence.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="186" column="56" selection-start-line="186" selection-start-column="27" selection-end-line="186" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_collection/all_comment_collector.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_collection/bug_report_collector_rest.py" />
+    <entry file="file://$PROJECT_DIR$/data_collection/bug_report_collector_xmlrpc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ML_Text_Categorical/classification_text.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="139">
+            <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

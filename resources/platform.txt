@@ -1,0 +1,13 @@
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.common
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.debug
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.releng.aggregator
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.releng.buildtools
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.releng
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.resources
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.runtime
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.swt
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.team
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.text
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.ua
+/home/aindrila/Documents/Projects/eclipse/eclipse.platform.ui
