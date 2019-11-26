@@ -34,7 +34,7 @@ traces help in bug triaging?
 
 2. To Run the model on new data set, please follow the steps mentioned below.
 
-    1. For setup of infozilla tool, please follow the syeps from https://github.com/kuyio/infozilla
+    1. For setup of infozilla tool, please follow the steps from https://github.com/kuyio/infozilla
     
     2. Download the comments of the bug reports. The structure of the location where the text file of comments should be kept is - path/bug_id/bug_id_comments.txt
     
@@ -57,4 +57,3 @@ RQ4. High Confidence Predictions: What is the impact of high confidence predicti
 accuracy of triaging?
 
 1. Run classification_text_component_high_confidence.py by passing appropraite cut_off confidence to the method classify_liblinear_confidence()
-# BugTriageEclipseHighConfidence

@@ -12,10 +12,10 @@ import math
 import operator
 
 # the csv contains the bug dataset
-bug_reports = pd.read_csv('./resources/eclipse_bugs_data.csv')
+bug_reports = pd.read_csv('.././resources/eclipse_bugs_data.csv')
 
 # This path contains the processed stack traces
-path = './resources/eclipse_all_bug_comments/'
+path = '.././resources/eclipse_all_bug_comments/'
 df_len = len(bug_reports.index)
 developers = []
 comps = []
@@ -47,10 +47,10 @@ for index in range(0,df_len):
         repos = []
         repo_path = ''
         if product == 'JDT':
-            with open('./resources/jdt.txt', 'r') as config:
+            with open('.././resources/jdt.txt', 'r') as config:
                 repos = config.read().split('\n')
         else:
-            with open('./resources/platform.txt', 'r') as config:
+            with open('.././resources/platform.txt', 'r') as config:
                 repos = config.read().split('\n')
         repos = [repo for repo in repos if repo!='']
 
@@ -74,5 +74,3 @@ for index in range(0,df_len):
 
     print(id+' Done')
 print(count)
-
-

@@ -26,20 +26,20 @@ def extract_features(features, texts, train):
     if train:
         vectorizer = DictVectorizer()
         vectorizer.fit(features)
-        with open('./trained_models/dict_vectorizer.pickle', 'wb') as file:
+        with open('.././trained_models/dict_vectorizer.pickle', 'wb') as file:
             pickle.dump(vectorizer, file)
     else:
-        with open('./trained_models/dict_vectorizer.pickle', 'rb') as file:
+        with open('.././trained_models/dict_vectorizer.pickle', 'rb') as file:
             vectorizer = pickle.load(file)
     nominal_features = vectorizer.transform(features).toarray()
 
     if train:
         tf_idf = TfidfVectorizer(analyzer='word', sublinear_tf=True)
         tf_idf.fit(texts)
-        with open('./trained_models/tfidf.pickle', 'wb') as file:
+        with open('.././trained_models/tfidf.pickle', 'wb') as file:
             pickle.dump(tf_idf, file)
     else:
-        with open('./trained_models/tfidf.pickle', 'rb') as file:
+        with open('.././trained_models/tfidf.pickle', 'rb') as file:
             tf_idf = pickle.load(file)
     text_features = tf_idf.transform(texts).toarray()
     all_features = np.concatenate((nominal_features, text_features), axis=1)
@@ -74,7 +74,7 @@ def convert_classes(fixers):
     classes = label_encoder.fit_transform(fixers)
     return classes
 
-br_df = pd.read_csv('./resources/eclipse_bugs_data_new.csv')
+br_df = pd.read_csv('.././resources/eclipse_bugs_data_new.csv')
 br_df = br_df.fillna('')
 
 br_df['summary'] = br_df['summary'].str.lower()

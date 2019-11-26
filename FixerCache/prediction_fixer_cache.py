@@ -11,7 +11,7 @@ import pickle
 import logging
 import numpy as np
 
-br_df = pd.read_csv('./resources/eclipse_bugs_data_new.csv')
+br_df = pd.read_csv('.././resources/eclipse_bugs_data_new.csv')
 br_df['created_on'] = pd.to_datetime(br_df.created_on)
 br_df.sort_values('created_on', inplace=True)
 br_df['created_on']=br_df['created_on'].dt.strftime('%Y-%m-%d')
@@ -23,7 +23,7 @@ fixers_names = br_df['fixer_names'].values
 br_df_len = len(br_df.index)
 
 user_dic = {}
-with open('./trained_models/user_email_name_dic.pickle', 'rb') as f:
+with open('.././trained_models/user_email_name_dic.pickle', 'rb') as f:
     user_dic = pickle.load(f)
 
 def collect_component_cache_scores():
@@ -45,14 +45,14 @@ def collect_component_cache_scores():
 
         resolved_bugs = []
         list_file = id + '_past_bugs.pickle'
-        with open('/home/aindrila/Documents/Projects/past_bugs_six_months/' + id + '/' + list_file, 'rb') as bugs:
+        with open('.././resources/past_bugs_six_months/' + id + '/' + list_file, 'rb') as bugs:
             resolved_bugs = pickle.load(bugs)
 
         # calculation of the scores of the developers in the cache
         for bug in resolved_bugs:
             history_file = str(bug) + '_history.pickle'
             past_bug_history = {}
-            with open('/home/aindrila/Documents/Projects/past_bugs_six_months/history/' + history_file, 'rb') as bugs:
+            with open('.././resources/past_bugs_six_months/history/' + history_file, 'rb') as bugs:
                 past_bug_history = pickle.load(bugs)
             bug_history = past_bug_history['bugs'][0]
             for history in bug_history['history']:
@@ -93,10 +93,10 @@ scores_df = pd.DataFrame(scores_list)
 print(len(user_dic.keys()))
 print(len(scores_df.index))
 print(len(scores_df.columns))
-with open('./trained_models/score_dataframes/component_score_df_six_months.pickle', 'wb') as f:
+with open('.././trained_models/score_dataframes/component_score_df_six_months.pickle', 'wb') as f:
     pickle.dump(scores_df, f)
 
-with open('./trained_models/score_dataframes/component_score_df_six_months.pickle', 'rb') as f:
+with open('.././trained_models/score_dataframes/component_score_df_six_months.pickle', 'rb') as f:
     scores_df = pickle.load(f)
 splitted_sets = []
 for group, df in br_df.groupby(np.arange(len(br_df)) // 100):

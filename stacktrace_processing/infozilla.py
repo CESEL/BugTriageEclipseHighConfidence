@@ -5,9 +5,9 @@ import pandas as pd
 import glob
 
 # Replace the path with the actual location
-path = '/home/aindrila/Documents/Projects/bugtriagingoss/resources/eclipse_all_bug_comments/'
+path = '.././resources/eclipse_all_bug_comments/'
 # The csv contains all the bug ids
-all_bugs = pd.read_csv('./resources/Eclipse_Bugs.csv')['Bug ID'].values
+all_bugs = pd.read_csv('.././resources/Eclipse_Bugs.csv')['Bug ID'].values
 # Put the path where infozilla tool is running
 os.chdir('/home/aindrila/Documents/Projects/infozilla_tool/infozilla')
 

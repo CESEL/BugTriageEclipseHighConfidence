@@ -12,7 +12,7 @@ import re
 import numpy as np
 import collections
 
-br_df = pd.read_csv('./resources/eclipse_bugs_data_new.csv')
+br_df = pd.read_csv('.././resources/eclipse_bugs_data_new.csv')
 br_df.sort_values('created_on', inplace=True)
 br_df.reset_index(inplace=True)
 br_df.drop(columns=['index'], inplace=True)
@@ -21,10 +21,10 @@ fixer_names = np.unique(br_df['fixer_names'].values)
 
 jdt_dict = {}
 platform_dict = {}
-path = './resources/eclipse_all_bug_comments/'
-with open('./resources/jdt_dict.json', 'r') as json_file:
+path = '.././resources/eclipse_all_bug_comments/'
+with open('.././resources/jdt_dict.json', 'r') as json_file:
     jdt_dict = json.load(json_file)
-with open('./resources/platform_dict.json', 'r') as json_file:
+with open('.././resources/platform_dict.json', 'r') as json_file:
     platform_dict = json.load(json_file)
 
 predictions = []
@@ -139,11 +139,11 @@ scores_list = collect_msr_scores()
 scores_df = pd.DataFrame(scores_list)
 print(len(scores_df.index))
 print(len(scores_df.columns))
-with open('./trained_models/score_dataframes/msr_score_df_six_months.pickle', 'wb') as f:
+with open('.././trained_models/score_dataframes/msr_score_df_six_months.pickle', 'wb') as f:
     pickle.dump(scores_df, f)
 
 scores_df = pd.DataFrame()
-with open('./trained_models/score_dataframes/msr_score_df_six_months.pickle', 'rb') as f:
+with open('.././trained_models/score_dataframes/msr_score_df_six_months.pickle', 'rb') as f:
     scores_df = pickle.load(f)
 print(len(scores_df.columns))
 splitted_sets = []

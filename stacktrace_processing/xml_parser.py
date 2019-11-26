@@ -4,8 +4,8 @@ import glob
 import json
 import os
 
-all_bugs = pd.read_csv('./resources/Eclipse_Bugs.csv')['Bug ID'].values
-path = './resources/eclipse_all_bug_comments/'
+all_bugs = pd.read_csv('.././resources/Eclipse_Bugs.csv')['Bug ID'].values
+path = '.././resources/eclipse_all_bug_comments/'
 
 def parse_stack_traces():
     for bug in all_bugs:

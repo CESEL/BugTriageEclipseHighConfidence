@@ -27,10 +27,10 @@ def extract_features(texts, train):
     if train:
         tf_idf = TfidfVectorizer(analyzer='word', sublinear_tf=True)
         tf_idf.fit(texts)
-        with open('./trained_models/tfidf.pickle', 'wb') as file:
+        with open('.././trained_models/tfidf.pickle', 'wb') as file:
             pickle.dump(tf_idf, file)
     else:
-        with open('./trained_models/tfidf.pickle', 'rb') as file:
+        with open('.././trained_models/tfidf.pickle', 'rb') as file:
             tf_idf = pickle.load(file)
     text_features = tf_idf.transform(texts).toarray()
     return text_features
@@ -143,10 +143,10 @@ def remove_less_active_devs(br_df):
     return br_df
 
 user_dic = {}
-with open('./trained_models/user_email_name_dic.pickle', 'rb') as f:
+with open('.././trained_models/user_email_name_dic.pickle', 'rb') as f:
     user_dic = pickle.load(f)
 
-br_df = pd.read_csv('./resources/eclipse_bugs_data_new.csv')
+br_df = pd.read_csv('.././resources/eclipse_bugs_data_new.csv')
 br_df = br_df.fillna('')
 
 br_df['summary'] = br_df['summary'].str.lower()

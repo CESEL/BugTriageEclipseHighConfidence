@@ -27,20 +27,20 @@ def extract_features(features, texts, train):
     if train:
         vectorizer = DictVectorizer()
         vectorizer.fit(features)
-        with open('./trained_models/dict_vectorizer.pickle', 'wb') as file:
+        with open('.././trained_models/dict_vectorizer.pickle', 'wb') as file:
             pickle.dump(vectorizer, file)
     else:
-        with open('./trained_models/dict_vectorizer.pickle', 'rb') as file:
+        with open('.././trained_models/dict_vectorizer.pickle', 'rb') as file:
             vectorizer = pickle.load(file)
     nominal_features = vectorizer.transform(features).toarray()
 
     if train:
         tf_idf = TfidfVectorizer(analyzer='word', sublinear_tf=True)
         tf_idf.fit(texts)
-        with open('./trained_models/tfidf.pickle', 'wb') as file:
+        with open('.././trained_models/tfidf.pickle', 'wb') as file:
             pickle.dump(tf_idf, file)
     else:
-        with open('./trained_models/tfidf.pickle', 'rb') as file:
+        with open('.././trained_models/tfidf.pickle', 'rb') as file:
             tf_idf = pickle.load(file)
     text_features = tf_idf.transform(texts).toarray()
     all_features = np.concatenate((nominal_features, text_features), axis=1)
@@ -99,13 +99,13 @@ def remove_less_active_devs(br_df):
 
         resolved_bugs = []
         list_file = str(last_bug_in_comp) + '_past_bugs.pickle'
-        with open('/home/aindrila/Documents/Projects/past_bugs_six_months/' + str(last_bug_in_comp) + '/' + list_file, 'rb') as bugs:
+        with open('.././resources/past_bugs_six_months/' + str(last_bug_in_comp) + '/' + list_file, 'rb') as bugs:
             resolved_bugs = pickle.load(bugs)
 
         for bug in resolved_bugs:
             history_file = str(bug) + '_history.pickle'
             past_bug_history = {}
-            with open('/home/aindrila/Documents/Projects/past_bugs_six_months/history/' + history_file, 'rb') as bugs:
+            with open('.././resources/past_bugs_six_months/history/' + history_file, 'rb') as bugs:
                 past_bug_history = pickle.load(bugs)
             bug_history = past_bug_history['bugs'][0]
             for history in bug_history['history']:
@@ -146,14 +146,14 @@ def remove_less_active_devs(br_df):
 def convert_classes(fixers):
     label_encoder = LabelEncoder()
     classes = label_encoder.fit_transform(fixers)
-    with open('./trained_models/label_encoder.pickle', 'wb') as file:
+    with open('.././trained_models/label_encoder.pickle', 'wb') as file:
         pickle.dump(label_encoder, file)
     return classes
 
 def get_sorted_fixers(fixers):
     label_encoder = None
     fixer_class = {}
-    with open('./trained_models/label_encoder.pickle', 'rb') as file:
+    with open('.././trained_models/label_encoder.pickle', 'rb') as file:
         label_encoder = pickle.load(file)
     classes = label_encoder.transform(fixers)
     for index in range(0,len(fixers)):
@@ -163,9 +163,9 @@ def get_sorted_fixers(fixers):
     return sorted_fixers
 
 user_dic = {}
-with open('./trained_models/user_email_name_dic.pickle', 'rb') as f:
+with open('.././trained_models/user_email_name_dic.pickle', 'rb') as f:
     user_dic = pickle.load(f)
-br_df = pd.read_csv('./resources/eclipse_bugs_data_new.csv')
+br_df = pd.read_csv('.././resources/eclipse_bugs_data_new.csv')
 br_df = br_df.fillna('')
 
 br_df['summary'] = br_df['summary'].str.lower()
@@ -184,9 +184,9 @@ br_df.drop(columns=['index'], inplace=True)
 scores_comp_df = None
 scores_msr_df = None
 
-with open('./trained_models/score_dataframes/msr_score_df_six_months.pickle', 'rb') as f:
+with open('.././trained_models/score_dataframes/msr_score_df_six_months.pickle', 'rb') as f:
     scores_msr_df = pickle.load(f)
-with open('./trained_models/score_dataframes/component_score_df_six_months.pickle', 'rb') as f:
+with open('.././trained_models/score_dataframes/component_score_df_six_months.pickle', 'rb') as f:
     scores_comp_df = pickle.load(f)
 
 splitted_sets = []

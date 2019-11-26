@@ -15,7 +15,7 @@ import logging
 def collect_past_bugs():
     url = "https://bugs.eclipse.org/bugs/xmlrpc.cgi"
     bugzilla = Bugzilla(url)
-    bug_ids = pd.read_csv('./resources/Eclipse_Bugs.csv')['Bug ID'].values
+    bug_ids = pd.read_csv('.././resources/Eclipse_Bugs.csv')['Bug ID'].values
     all_bugs = bugzilla.getbugs(bug_ids.tolist(), include_fields=['creation_time', 'product', 'component'])
 
     for bug in all_bugs:
@@ -41,22 +41,22 @@ def collect_past_bugs():
         resolved_bugs = bugzilla.query(query)
         resolved_bugs = [bug.id for bug in resolved_bugs]
 
-        os.mkdir('/home/aindrila/Documents/Projects/past_bugs_six_months/' + id)
+        os.mkdir('.././resources/past_bugs_six_months/' + id)
         file = id + '_past_bugs.pickle'
-        with open('/home/aindrila/Documents/Projects/past_bugs_six_months/' + id + '/' + file, 'wb') as out_file:
+        with open('.././resources/past_bugs_six_months/' + id + '/' + file, 'wb') as out_file:
             pickle.dump(resolved_bugs, out_file)
         print(id + ' Done')
 
 def collect_past_bugs_history():
     url = "https://bugs.eclipse.org/bugs/xmlrpc.cgi"
     bugzilla = Bugzilla(url)
-    bug_ids = pd.read_csv('./resources/Eclipse_Bugs.csv')['Bug ID'].values
+    bug_ids = pd.read_csv('.././resources/Eclipse_Bugs.csv')['Bug ID'].values
     past_bug_set = set()
     for id in bug_ids:
         id = str(id)
         file = id + '_past_bugs.pickle'
         past_bugs = []
-        with open('/home/aindrila/Documents/Projects/past_bugs_six_months/' + id + '/' + file, 'rb') as bugs:
+        with open('.././resources/past_bugs_six_months/' + id + '/' + file, 'rb') as bugs:
             past_bugs = pickle.load(bugs)
         past_bug_set.update(past_bugs)
 
@@ -66,7 +66,7 @@ def collect_past_bugs_history():
     for resolved_bug in resolved_bugs:
         bug_history = resolved_bug.get_history_raw()
         file = str(resolved_bug.id)+'_history.pickle'
-        with open('/home/aindrila/Documents/Projects/past_bugs_six_months/history/'+file, 'wb') as out_file:
+        with open('.././resources/past_bugs_six_months/history/'+file, 'wb') as out_file:
             pickle.dump(bug_history, out_file)
         print(str(resolved_bug.id) + ' Done')
 
