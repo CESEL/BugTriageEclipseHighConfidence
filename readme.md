@@ -1,3 +1,5 @@
+# BugTriageEclipseHighConfidence
+
 Dependencies: The code runs with Python 3.7. It has dependency on the following libraries -
 1. GitPython
 2. PyDriller
@@ -57,3 +59,7 @@ RQ4. High Confidence Predictions: What is the impact of high confidence predicti
 accuracy of triaging?
 
 1. Run classification_text_component_high_confidence.py by passing appropraite cut_off confidence to the method classify_liblinear_confidence()
+<<<<<<< HEAD
+=======
+
+>>>>>>> e34de5efdc49bef79e00dca07c3388467b549ddc

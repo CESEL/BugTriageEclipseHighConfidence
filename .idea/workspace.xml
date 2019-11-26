@@ -10,56 +10,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/ML_Text_Categorical/classification_text_component.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/ML_Text_Categorical/classification_text_component_all_devs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="77" column="24" lean-forward="true" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/stacktrace_processing/infozilla.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/stacktrace_processing/prediction_by_msr.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="145" column="23" selection-start-line="145" selection-start-column="16" selection-end-line="145" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/stacktrace_processing/source_code_path_in_repo_collector.py">
+        <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/ensemble/classification_ensemble.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="17" column="19" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="178">
+              <caret line="188" column="23" selection-start-line="188" selection-start-column="16" selection-end-line="188" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -83,8 +38,8 @@
       <find>tra</find>
       <find>resources</find>
       <find>resource</find>
-      <find>trained</find>
       <find>resour</find>
+      <find>trained</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources/</replace>
@@ -121,6 +76,7 @@
         <option value="$PROJECT_DIR$/../BugTriagingEclipse/stacktrace_processing/prediction_by_msr.py" />
         <option value="$PROJECT_DIR$/../BugTriagingEclipse/stacktrace_processing/source_code_path_in_repo_collector.py" />
         <option value="$PROJECT_DIR$/../BugTriagingEclipse/ML_Text_Categorical/classification_text_component.py" />
+        <option value="$PROJECT_DIR$/../BugTriagingEclipse/readme.md" />
       </list>
     </option>
   </component>
@@ -405,30 +361,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="71">
-            <caret line="29" selection-start-line="29" selection-end-line="30" selection-end-column="28" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/stacktrace_processing/xml_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/ensemble/classification_ensemble.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="188" column="23" selection-start-line="188" selection-start-column="16" selection-end-line="188" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/FixerCache/past_bug_history_collector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
@@ -504,6 +436,30 @@
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/stacktrace_processing/xml_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="314">
+            <caret line="45" column="4" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BugTriagingEclipse/ensemble/classification_ensemble.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="188" column="23" selection-start-line="188" selection-start-column="16" selection-end-line="188" selection-end-column="23" />
         </state>
       </provider>
     </entry>
