@@ -12,6 +12,10 @@ Then run the following script to install the libraries
 ```bash
 ./install-libs.sh
 ```
+Then run the following script to setup the dataset
+```bash
+./setup-data.sh
+```
 # Results
 
 ## RQ1a. Textual & Categorical:
