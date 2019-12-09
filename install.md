@@ -1,29 +1,17 @@
 # Dependencies 
 
-The code runs with Python 3.7. It has dependency on the following libraries. 
-
-Run the commands to install them:
-
+Run the following script to install python and setup a virtual environment
 ```bash
-pip install gitpython
-
-pip install pydriller
-
-pip install nltk
-
-pip install numpy
-
-pip install pandas
-
-pip install python-bugzilla
-
-pip install python-dateutil
-
-pip install scikit-learn
-
-pip install scipy
+./install-python.sh
 ```
-
+Next run this command to activate the virtual environment
+```bash
+source virtualenv-python/bin/activate
+```
+Then run the following script to install the libraries
+```bash
+./install-libs.sh
+```
 # Results
 
 ## RQ1a. Textual & Categorical:
