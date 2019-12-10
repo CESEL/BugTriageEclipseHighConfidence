@@ -11,9 +11,7 @@ Dependencies: The code runs with Python 3.7. It has dependency on the following 
 8. scikit-learn
 9. scipy
 
-Dataset:
-1. Please unzip the folder eclipse_all_bug_comments.zip in the resources folder.
-2. All the data used in the experiments is in resources folder. 
+To setup python and install the ibraries and prepare the dataset, please refer to [install](https://github.com/CESEL/BugTriageEclipseHighConfidence/blob/master/install.md)
 
 RQ1a. Textual & Categorical: How accurately do models containing textual and categorical
 features triage bugs?
