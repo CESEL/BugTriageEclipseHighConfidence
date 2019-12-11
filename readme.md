@@ -66,4 +66,4 @@ Does the model trained with text, categorical and log features improve accuracy 
 ### RQ4. High Confidence Predictions
 What is the impact of high confidence prediction on the accuracy of triaging?
 
-1. Run [classification_text_component_high_confidence](https://github.com/CESEL/BugTriageEclipseHighConfidence/blob/master/high_confidence_prediction/classification_text_component_high_confidence.py) by setting appropraite cut_off confidence in config.json.
+1. Run [classification_text_component_high_confidence](https://github.com/CESEL/BugTriageEclipseHighConfidence/blob/master/high_confidence_prediction/classification_text_component_high_confidence.py) by setting appropraite cut_off confidence in [config.json](https://github.com/CESEL/BugTriageEclipseHighConfidence/blob/master/resources/config.json)
