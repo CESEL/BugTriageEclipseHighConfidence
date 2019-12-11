@@ -13,6 +13,7 @@ from nltk.stem import SnowballStemmer
 import logging
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
+import json
 
 def preprocess_text(text):
     stemmer = SnowballStemmer('english')
@@ -26,20 +27,20 @@ def extract_features(features, texts, train):
     if train:
         vectorizer = DictVectorizer()
         vectorizer.fit(features)
-        with open('.././trained_models/dict_vectorizer.pickle', 'wb') as file:
+        with open('./trained_models/dict_vectorizer.pickle', 'wb') as file:
             pickle.dump(vectorizer, file)
     else:
-        with open('.././trained_models/dict_vectorizer.pickle', 'rb') as file:
+        with open('./trained_models/dict_vectorizer.pickle', 'rb') as file:
             vectorizer = pickle.load(file)
     nominal_features = vectorizer.transform(features).toarray()
 
     if train:
         tf_idf = TfidfVectorizer(analyzer='word', sublinear_tf=True)
         tf_idf.fit(texts)
-        with open('.././trained_models/tfidf.pickle', 'wb') as file:
+        with open('./trained_models/tfidf.pickle', 'wb') as file:
             pickle.dump(tf_idf, file)
     else:
-        with open('.././trained_models/tfidf.pickle', 'rb') as file:
+        with open('./trained_models/tfidf.pickle', 'rb') as file:
             tf_idf = pickle.load(file)
     text_features = tf_idf.transform(texts).toarray()
     all_features = np.concatenate((nominal_features, text_features), axis=1)
@@ -50,11 +51,11 @@ def classify_liblinear_topn(features, true_classes, classes_train, train, topn):
     predicted_classes = []
 
     if train:
-        logistic_regression = LogisticRegression(solver='liblinear', penalty='l2', multi_class='ovr', max_iter=50000, C=5.0)
+        logistic_regression = LogisticRegression(solver='liblinear', penalty='l2', multi_class='ovr', max_iter=50000, C=config["C_parameter"])
         logistic_regression.fit(features, true_classes)
-        pickle.dump(logistic_regression, open('_liblinear.pickle', 'wb'))
+        pickle.dump(logistic_regression, open('./trained_models/liblinear.pickle', 'wb'))
     else:
-        logistic_regression = pickle.load(open('_liblinear.pickle', 'rb'))
+        logistic_regression = pickle.load(open('./trained_models/liblinear.pickle', 'rb'))
         predicted_classes = logistic_regression.predict(features)
         probabilities = logistic_regression.predict_proba(features)
         i = 0
@@ -74,7 +75,7 @@ def convert_classes(fixers):
     classes = label_encoder.fit_transform(fixers)
     return classes
 
-br_df = pd.read_csv('.././resources/eclipse_bugs_data_new.csv')
+br_df = pd.read_csv('./resources/eclipse_bugs_data_new.csv')
 br_df = br_df.fillna('')
 
 br_df['summary'] = br_df['summary'].str.lower()
@@ -83,7 +84,7 @@ br_df['summary'] = br_df['summary'] + ' ' + br_df['description']
 br_df['summary'] = br_df['summary'].apply(preprocess_text)
 br_df['created_on'] = pd.to_datetime(br_df.created_on)
 br_df['class'] = pd.Series(convert_classes(br_df['fixer_names']))
-print(len(np.unique(br_df['class'].values)))
+
 br_df.sort_values('created_on', inplace=True)
 br_df.reset_index(inplace=True)
 br_df.drop(columns=['index'], inplace=True)
@@ -91,6 +92,10 @@ br_df.drop(columns=['index'], inplace=True)
 splitted_sets = []
 for group, df in br_df.groupby(np.arange(len(br_df)) // 100):
     splitted_sets.append(df)
+
+config = {}
+with open('./resources/config.json') as json_data_file:
+    config = json.load(json_data_file)
 
 accuracies = []
 precisions = []
@@ -128,9 +133,9 @@ for each_set in splitted_sets[1:]:
     print(str(step)+' Done')
     step = step + 1
 
-print(np.mean(accuracies))
-print(np.mean(top3_accuracies))
-print(np.mean(top5_accuracies))
+print("Top1 accuracy="+str(np.mean(accuracies)))
+print("Top3 accuracy="+str(np.mean(top3_accuracies)))
+print("Top5 accuracy="+str(np.mean(top5_accuracies)))
 
 
 

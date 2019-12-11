@@ -14,6 +14,7 @@ from _datetime import datetime
 import dateutil.relativedelta
 import math
 import operator
+import json
 
 def preprocess_text(text):
     stemmer = SnowballStemmer('english')
@@ -27,20 +28,20 @@ def extract_features(features, texts, train):
     if train:
         vectorizer = DictVectorizer()
         vectorizer.fit(features)
-        with open('.././trained_models/dict_vectorizer.pickle', 'wb') as file:
+        with open('./trained_models/dict_vectorizer.pickle', 'wb') as file:
             pickle.dump(vectorizer, file)
     else:
-        with open('.././trained_models/dict_vectorizer.pickle', 'rb') as file:
+        with open('./trained_models/dict_vectorizer.pickle', 'rb') as file:
             vectorizer = pickle.load(file)
     nominal_features = vectorizer.transform(features).toarray()
 
     if train:
         tf_idf = TfidfVectorizer(analyzer='word', sublinear_tf=True)
         tf_idf.fit(texts)
-        with open('.././trained_models/tfidf.pickle', 'wb') as file:
+        with open('./trained_models/tfidf.pickle', 'wb') as file:
             pickle.dump(tf_idf, file)
     else:
-        with open('.././trained_models/tfidf.pickle', 'rb') as file:
+        with open('./trained_models/tfidf.pickle', 'rb') as file:
             tf_idf = pickle.load(file)
     text_features = tf_idf.transform(texts).toarray()
     all_features = np.concatenate((nominal_features, text_features), axis=1)
@@ -50,11 +51,11 @@ def classify_liblinear(features, true_classes, train):
     accuracy = 0
 
     if train:
-        logistic_regression = LogisticRegression(solver='liblinear', penalty='l2', multi_class='ovr', max_iter=50000, C=10.0)
+        logistic_regression = LogisticRegression(solver='liblinear', penalty='l2', multi_class='ovr', max_iter=50000, C=config["C_parameter"])
         logistic_regression.fit(features, true_classes)
-        pickle.dump(logistic_regression, open('liblinear.pickle', 'wb'))
+        pickle.dump(logistic_regression, open('./trained_models/liblinear.pickle', 'wb'))
     else:
-        logistic_regression = pickle.load(open('liblinear.pickle', 'rb'))
+        logistic_regression = pickle.load(open('./trained_models/liblinear.pickle', 'rb'))
         predicted_classes = logistic_regression.predict(features)
         accuracy = accuracy_score(true_classes, predicted_classes)
 
@@ -65,11 +66,11 @@ def classify_liblinear_topn(features, true_classes, classes_train, train, topn):
     predicted_classes = []
 
     if train:
-        logistic_regression = LogisticRegression(solver='liblinear', penalty='l2', multi_class='ovr', max_iter=50000, C=10.0)
+        logistic_regression = LogisticRegression(solver='liblinear', penalty='l2', multi_class='ovr', max_iter=50000, C=config["C_parameter"])
         logistic_regression.fit(features, true_classes)
-        pickle.dump(logistic_regression, open('liblinear.pickle', 'wb'))
+        pickle.dump(logistic_regression, open('./trained_models/liblinear.pickle', 'wb'))
     else:
-        logistic_regression = pickle.load(open('liblinear.pickle', 'rb'))
+        logistic_regression = pickle.load(open('./trained_models/liblinear.pickle', 'rb'))
         predicted_classes = logistic_regression.predict(features)
         probabilities = logistic_regression.predict_proba(features)
         i = 0
@@ -96,7 +97,7 @@ def remove_less_active_devs(br_df):
         last_bug_in_comp = br_df_comp['bug_id'].values[len(br_df_comp.index.values)-1]
         created_on = br_df_comp[br_df_comp['bug_id']==last_bug_in_comp]['created_on'].values[0]
         to_dt = datetime.strptime(created_on, '%Y-%m-%d')
-        from_dt = to_dt - dateutil.relativedelta.relativedelta(months=6)
+        from_dt = to_dt - dateutil.relativedelta.relativedelta(months=config["fix_period"])
 
         bug_fixes = {}
         scores = dict((fixer, 0) for fixer in br_df['fixer_names'].values)
@@ -108,13 +109,13 @@ def remove_less_active_devs(br_df):
 
         resolved_bugs = []
         list_file = str(last_bug_in_comp) + '_past_bugs.pickle'
-        with open('/home/aindrila/Documents/Projects/past_bugs_six_months/' + str(last_bug_in_comp) + '/' + list_file, 'rb') as bugs:
+        with open('./resources/past_bugs_six_months/' + str(last_bug_in_comp) + '/' + list_file, 'rb') as bugs:
             resolved_bugs = pickle.load(bugs)
 
         for bug in resolved_bugs:
             history_file = str(bug) + '_history.pickle'
             past_bug_history = {}
-            with open('/home/aindrila/Documents/Projects/past_bugs_six_months/history/' + history_file, 'rb') as bugs:
+            with open('./resources/past_bugs_six_months/history/' + history_file, 'rb') as bugs:
                 past_bug_history = pickle.load(bugs)
             bug_history = past_bug_history['bugs'][0]
             for history in bug_history['history']:
@@ -154,10 +155,14 @@ def remove_less_active_devs(br_df):
     return br_df
 
 user_dic = {}
-with open('.././trained_models/user_email_name_dic.pickle', 'rb') as f:
+with open('./trained_models/user_email_name_dic.pickle', 'rb') as f:
     user_dic = pickle.load(f)
 
-br_df = pd.read_csv('.././resources/eclipse_bugs_data_new.csv')
+config = {}
+with open('./resources/config.json') as json_data_file:
+    config = json.load(json_data_file)
+
+br_df = pd.read_csv('./resources/eclipse_bugs_data_new.csv')
 br_df = br_df.fillna('')
 
 br_df['summary'] = br_df['summary'].str.lower()
@@ -168,7 +173,7 @@ br_df['created_on'] = pd.to_datetime(br_df.created_on)
 br_df['fixer'] = br_df['fixer'].str.lower()
 br_df['fixer_names'] = br_df['fixer_names'].str.lower()
 br_df['class'] = pd.Series(convert_classes(br_df['fixer_names']))
-print(len(np.unique(br_df['class'].values)))
+
 br_df.sort_values('created_on', inplace=True)
 br_df['created_on']=br_df['created_on'].dt.strftime('%Y-%m-%d')
 br_df.reset_index(inplace=True)
@@ -181,7 +186,6 @@ for group, df in br_df.groupby(np.arange(len(br_df)) // 100):
 accuracies = []
 precisions = []
 recalls = []
-predictions = []
 top3_accuracies = []
 top5_accuracies = []
 
@@ -189,7 +193,7 @@ br_df = splitted_sets[0]
 step = 1
 for each_set in splitted_sets[1:]:
     br_df_test = each_set
-    br_df = remove_less_active_devs(br_df)
+    #br_df = remove_less_active_devs(br_df)
 
     train_size = len(br_df.index)
     test_size = len(br_df_test.index)
@@ -208,14 +212,12 @@ for each_set in splitted_sets[1:]:
 
     accuracies.append(accuracy)
     top3_accuracies.append(top3_accuracy)
-    top5_accuracies.append(top5_accuracy)
-    predictions.append(prediction)
+    top5_accuracies.append(top5_accuracy)    
 
     br_df = br_df.append(each_set, ignore_index=True, sort=False)
     print(str(step) + 'done')
     step = step+1
 
-print(np.mean(accuracies))
-print(np.mean(top3_accuracies))
-print(np.mean(top5_accuracies))
-print(np.mean(predictions))
+print("Top1 accuracy="+str(np.mean(accuracies)))
+print("Top3 accuracy="+str(np.mean(top3_accuracies)))
+print("Top5 accuracy="+str(np.mean(top5_accuracies)))

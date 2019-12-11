@@ -12,7 +12,7 @@ import re
 import numpy as np
 import collections
 
-br_df = pd.read_csv('.././resources/eclipse_bugs_data_new.csv')
+br_df = pd.read_csv('./resources/eclipse_bugs_data_new.csv')
 br_df.sort_values('created_on', inplace=True)
 br_df.reset_index(inplace=True)
 br_df.drop(columns=['index'], inplace=True)
@@ -21,11 +21,16 @@ fixer_names = np.unique(br_df['fixer_names'].values)
 
 jdt_dict = {}
 platform_dict = {}
-path = '.././resources/eclipse_all_bug_comments/'
-with open('.././resources/jdt_dict.json', 'r') as json_file:
+path = './resources/eclipse_all_bug_comments/'
+
+with open('./resources/jdt_dict.json', 'r') as json_file:
     jdt_dict = json.load(json_file)
-with open('.././resources/platform_dict.json', 'r') as json_file:
+with open('./resources/platform_dict.json', 'r') as json_file:
     platform_dict = json.load(json_file)
+
+config = {}
+with open('./resources/config.json') as json_data_file:
+    config = json.load(json_data_file)
 
 predictions = []
 br_df_len = len(br_df.index)
@@ -35,7 +40,7 @@ bugzilla = Bugzilla(url)
 
 def predict_by_stacktrace_msr(files, to_dt, id):
     file_found_count = 0
-    from_dt = to_dt - dateutil.relativedelta.relativedelta(months=6)
+    from_dt = to_dt - dateutil.relativedelta.relativedelta(months=config["commit_period"])
     file_path = ''
     file_repo_path = {}
     scores = dict((fixer, 0) for fixer in fixer_names)
@@ -111,7 +116,7 @@ def collect_msr_scores():
                 if component in platform_dict:
                     repo = platform_dict[component]
             if repo != '':
-                from_dt = to_dt - dateutil.relativedelta.relativedelta(months=6)
+                from_dt = to_dt - dateutil.relativedelta.relativedelta(months=config["commit_period"])
                 commits = {}
                 last_commits = {}
                 last_commit_date = ''
@@ -137,13 +142,12 @@ def collect_msr_scores():
 
 scores_list = collect_msr_scores()
 scores_df = pd.DataFrame(scores_list)
-print(len(scores_df.index))
-print(len(scores_df.columns))
-with open('.././trained_models/score_dataframes/msr_score_df_six_months.pickle', 'wb') as f:
+
+with open('./trained_models/score_dataframes/msr_score_df_twelve_months.pickle', 'wb') as f:
     pickle.dump(scores_df, f)
 
 scores_df = pd.DataFrame()
-with open('.././trained_models/score_dataframes/msr_score_df_six_months.pickle', 'rb') as f:
+with open('./trained_models/score_dataframes/msr_score_df_twelve_months.pickle', 'rb') as f:
     scores_df = pickle.load(f)
 print(len(scores_df.columns))
 splitted_sets = []
@@ -198,6 +202,6 @@ top3_accuracy = counter[1]/len(accuracy_top3)
 counter = collections.Counter(accuracy_top5)
 top5_accuracy = counter[1]/len(accuracy_top5)
 
-print(top1_accuracy)
-print(top3_accuracy)
-print(top5_accuracy)
+print("Top1 accuracy="+str(top1_accuracy))
+print("Top3 accuracy="+str(top3_accuracy))
+print("Top5 accuracy="+str(top5_accuracy))

@@ -10,8 +10,9 @@ import glob
 import pickle
 import logging
 import numpy as np
+import json
 
-br_df = pd.read_csv('.././resources/eclipse_bugs_data_new.csv')
+br_df = pd.read_csv('./resources/eclipse_bugs_data_new.csv')
 br_df['created_on'] = pd.to_datetime(br_df.created_on)
 br_df.sort_values('created_on', inplace=True)
 br_df['created_on']=br_df['created_on'].dt.strftime('%Y-%m-%d')
@@ -23,8 +24,12 @@ fixers_names = br_df['fixer_names'].values
 br_df_len = len(br_df.index)
 
 user_dic = {}
-with open('.././trained_models/user_email_name_dic.pickle', 'rb') as f:
+with open('./trained_models/user_email_name_dic.pickle', 'rb') as f:
     user_dic = pickle.load(f)
+
+config = {}
+with open('./resources/config.json') as json_data_file:
+    config = json.load(json_data_file)
 
 def collect_component_cache_scores():
     scores_list = []
@@ -34,7 +39,7 @@ def collect_component_cache_scores():
         component = br_df.iloc[index]['component']
         created_on = br_df.iloc[index]['created_on']
         to_dt = datetime.strptime(created_on, '%Y-%m-%d')
-        from_dt = to_dt - dateutil.relativedelta.relativedelta(months=6)
+        from_dt = to_dt - dateutil.relativedelta.relativedelta(months=config["fix_period"])
 
         bug_fixes = {}
         last_fixed_time = None
@@ -45,14 +50,14 @@ def collect_component_cache_scores():
 
         resolved_bugs = []
         list_file = id + '_past_bugs.pickle'
-        with open('.././resources/past_bugs_six_months/' + id + '/' + list_file, 'rb') as bugs:
+        with open('./resources/past_bugs_six_months/' + id + '/' + list_file, 'rb') as bugs:
             resolved_bugs = pickle.load(bugs)
 
         # calculation of the scores of the developers in the cache
         for bug in resolved_bugs:
             history_file = str(bug) + '_history.pickle'
             past_bug_history = {}
-            with open('.././resources/past_bugs_six_months/history/' + history_file, 'rb') as bugs:
+            with open('./resources/past_bugs_six_months/history/' + history_file, 'rb') as bugs:
                 past_bug_history = pickle.load(bugs)
             bug_history = past_bug_history['bugs'][0]
             for history in bug_history['history']:
@@ -90,14 +95,17 @@ def collect_component_cache_scores():
 
 scores_list = collect_component_cache_scores()
 scores_df = pd.DataFrame(scores_list)
-print(len(user_dic.keys()))
-print(len(scores_df.index))
-print(len(scores_df.columns))
-with open('.././trained_models/score_dataframes/component_score_df_six_months.pickle', 'wb') as f:
+
+with open('./trained_models/score_dataframes/component_score_df_six_months.pickle', 'wb') as f:
     pickle.dump(scores_df, f)
 
-with open('.././trained_models/score_dataframes/component_score_df_six_months.pickle', 'rb') as f:
+with open('./trained_models/score_dataframes/component_score_df_six_months.pickle', 'rb') as f:
     scores_df = pickle.load(f)
+
+config = {}
+with open('./resources/config.json') as json_data_file:
+    config = json.load(json_data_file)
+
 splitted_sets = []
 for group, df in br_df.groupby(np.arange(len(br_df)) // 100):
     splitted_sets.append(df)
@@ -146,6 +154,6 @@ top3_accuracy = counter[1]/len(accuracy_top3)
 counter = collections.Counter(accuracy_top5)
 top5_accuracy = counter[1]/len(accuracy_top5)
 
-print(top1_accuracy)
-print(top3_accuracy)
-print(top5_accuracy)
+print("Top1 accuracy="+str(top1_accuracy))
+print("Top3 accuracy="+str(top3_accuracy))
+print("Top5 accuracy="+str(top5_accuracy))

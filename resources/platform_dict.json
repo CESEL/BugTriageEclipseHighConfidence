@@ -1,1 +1,11 @@
-{"Compare": "/home/aindrila/Documents/Projects/eclipse/eclipse.platform.team", "Debug": "/home/aindrila/Documents/Projects/eclipse/eclipse.platform.debug", "Resources": "/home/aindrila/Documents/Projects/eclipse/eclipse.platform.resources", "Releng": "/home/aindrila/Documents/Projects/eclipse/eclipse.platform.releng", "Runtime": "/home/aindrila/Documents/Projects/eclipse/eclipse.platform.runtime", "SWT": "/home/aindrila/Documents/Projects/eclipse/eclipse.platform.swt", "Team": "/home/aindrila/Documents/Projects/eclipse/eclipse.platform.team", "Text": "/home/aindrila/Documents/Projects/eclipse/eclipse.platform.text", "UI": "/home/aindrila/Documents/Projects/eclipse/eclipse.platform.ui", "User Assistance": "/home/aindrila/Documents/Projects/eclipse/eclipse.platform.ua"}
+{
+"Compare": "./resources/eclipse.platform.team", 
+"Debug": "./resources/eclipse.platform.debug", 
+"Resources": "./resources/eclipse.platform.resources", 
+"Releng": "./resources/eclipse.platform.releng", 
+"Runtime": "./resources/eclipse.platform.runtime", 
+"SWT": "./resources/eclipse.platform.swt", 
+"Team": "./resources/eclipse.platform.team", 
+"Text": "./resources/eclipse.platform.text", 
+"UI": "./resources/eclipse.platform.ui", 
+"User Assistance": "./resources/eclipse.platform.ua"}

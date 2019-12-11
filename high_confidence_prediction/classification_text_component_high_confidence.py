@@ -14,6 +14,7 @@ from _datetime import datetime
 import dateutil.relativedelta
 import math
 import operator
+import json
 
 def preprocess_text(text):
     stemmer = SnowballStemmer('english')
@@ -27,20 +28,20 @@ def extract_features(features, texts, train):
     if train:
         vectorizer = DictVectorizer()
         vectorizer.fit(features)
-        with open('.././trained_models/dict_vectorizer.pickle', 'wb') as file:
+        with open('./trained_models/dict_vectorizer.pickle', 'wb') as file:
             pickle.dump(vectorizer, file)
     else:
-        with open('.././trained_models/dict_vectorizer.pickle', 'rb') as file:
+        with open('./trained_models/dict_vectorizer.pickle', 'rb') as file:
             vectorizer = pickle.load(file)
     nominal_features = vectorizer.transform(features).toarray()
 
     if train:
         tf_idf = TfidfVectorizer(analyzer='word', sublinear_tf=True)
         tf_idf.fit(texts)
-        with open('.././trained_models/tfidf.pickle', 'wb') as file:
+        with open('./trained_models/tfidf.pickle', 'wb') as file:
             pickle.dump(tf_idf, file)
     else:
-        with open('.././trained_models/tfidf.pickle', 'rb') as file:
+        with open('./trained_models/tfidf.pickle', 'rb') as file:
             tf_idf = pickle.load(file)
     text_features = tf_idf.transform(texts).toarray()
     all_features = np.concatenate((nominal_features, text_features), axis=1)
@@ -50,7 +51,7 @@ def classify_liblinear_confidence(features, true_classes, train, cut_off):
     accuracy = 0.0
     predictions = 0.0
     if train:
-        logistic_regression = LogisticRegression(solver='liblinear', penalty='l2', multi_class='ovr', max_iter=50000, C=10.0)
+        logistic_regression = LogisticRegression(solver='liblinear', penalty='l2', multi_class='ovr', max_iter=50000, C=config["C_parameter"])
         logistic_regression.fit(features, true_classes)
         pickle.dump(logistic_regression, open('liblinear.pickle', 'wb'))
     else:
@@ -78,7 +79,7 @@ def remove_less_active_devs(br_df):
         last_bug_in_comp = br_df_comp['bug_id'].values[len(br_df_comp.index.values)-1]
         created_on = br_df_comp[br_df_comp['bug_id']==last_bug_in_comp]['created_on'].values[0]
         to_dt = datetime.strptime(created_on, '%Y-%m-%d')
-        from_dt = to_dt - dateutil.relativedelta.relativedelta(months=6)
+        from_dt = to_dt - dateutil.relativedelta.relativedelta(months=config["fix_period"])
 
         bug_fixes = {}
         scores = dict((fixer, 0) for fixer in br_df['fixer_names'].values)
@@ -90,13 +91,13 @@ def remove_less_active_devs(br_df):
 
         resolved_bugs = []
         list_file = str(last_bug_in_comp) + '_past_bugs.pickle'
-        with open('/home/aindrila/Documents/Projects/past_bugs_six_months/' + str(last_bug_in_comp) + '/' + list_file, 'rb') as bugs:
+        with open('./resources/past_bugs_six_months/' + str(last_bug_in_comp) + '/' + list_file, 'rb') as bugs:
             resolved_bugs = pickle.load(bugs)
 
         for bug in resolved_bugs:
             history_file = str(bug) + '_history.pickle'
             past_bug_history = {}
-            with open('/home/aindrila/Documents/Projects/past_bugs_six_months/history/' + history_file, 'rb') as bugs:
+            with open('./resources/past_bugs_six_months/history/' + history_file, 'rb') as bugs:
                 past_bug_history = pickle.load(bugs)
             bug_history = past_bug_history['bugs'][0]
             for history in bug_history['history']:
@@ -136,10 +137,14 @@ def remove_less_active_devs(br_df):
     return br_df
 
 user_dic = {}
-with open('.././trained_models/user_email_name_dic.pickle', 'rb') as f:
+with open('./trained_models/user_email_name_dic.pickle', 'rb') as f:
     user_dic = pickle.load(f)
 
-br_df = pd.read_csv('.././resources/eclipse_bugs_data_new.csv')
+config = {}
+with open('./resources/config.json') as json_data_file:
+    config = json.load(json_data_file)
+
+br_df = pd.read_csv('./resources/eclipse_bugs_data_new.csv')
 br_df = br_df.fillna('')
 
 br_df['summary'] = br_df['summary'].str.lower()
@@ -150,7 +155,7 @@ br_df['created_on'] = pd.to_datetime(br_df.created_on)
 br_df['fixer'] = br_df['fixer'].str.lower()
 br_df['fixer_names'] = br_df['fixer_names'].str.lower()
 br_df['class'] = pd.Series(convert_classes(br_df['fixer_names']))
-print(len(np.unique(br_df['class'].values)))
+
 br_df.sort_values('created_on', inplace=True)
 br_df['created_on']=br_df['created_on'].dt.strftime('%Y-%m-%d')
 br_df.reset_index(inplace=True)
@@ -183,8 +188,8 @@ for each_set in splitted_sets[1:]:
     features_test = extract_features(test_nominal, br_df_test['summary'], False)
 
     classes_train = np.unique(br_df['class'].values)
-    classify_liblinear_confidence(features_train, br_df['class'].values, True, 0.8)
-    accuracy, prediction = classify_liblinear_confidence(features_test, br_df_test['class'].values, False, 0.8)
+    classify_liblinear_confidence(features_train, br_df['class'].values, True, config["cutoff_confidence"])
+    accuracy, prediction = classify_liblinear_confidence(features_test, br_df_test['class'].values, False, config["cutoff_confidence"])
 
     accuracies.append(accuracy)
     predictions.append(prediction)
@@ -193,8 +198,8 @@ for each_set in splitted_sets[1:]:
     print(str(step) + 'done')
     step = step+1
 
-print(np.mean(accuracies))
-print(np.mean(predictions))
+print('accuracy=' + str(np.mean(accuracies)))
+print('predictions' + str(np.mean(predictions)))
 
 
 

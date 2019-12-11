@@ -1,4 +1,4 @@
-/home/aindrila/Documents/Projects/eclipse/eclipse.jdt
-/home/aindrila/Documents/Projects/eclipse/eclipse.jdt.core
-/home/aindrila/Documents/Projects/eclipse/eclipse.jdt.debug
-/home/aindrila/Documents/Projects/eclipse/eclipse.jdt.ui
+./resouces/eclipse.jdt
+./resouces/eclipse.jdt.core
+./resouces/eclipse.jdt.debug
+./resouces/eclipse.jdt.ui

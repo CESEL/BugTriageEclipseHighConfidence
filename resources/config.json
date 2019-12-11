@@ -1,0 +1,7 @@
+{
+"cutoff_confidence": 0.8,
+"C_parameter": 10.0,
+"ensemble_C":20,
+"fix_period": 6,
+"commit_period": 12
+}

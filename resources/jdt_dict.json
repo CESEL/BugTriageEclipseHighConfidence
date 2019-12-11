@@ -1,1 +1,3 @@
-{"Core": "/home/aindrila/Documents/Projects/eclipse/eclipse.jdt.core", "Debug": "/home/aindrila/Documents/Projects/eclipse/eclipse.jdt.debug", "UI": "/home/aindrila/Documents/Projects/eclipse/eclipse.jdt.ui"}
+{"Core": "./resources/eclipse.jdt.core", 
+"Debug": "./resources/eclipse.jdt.debug", 
+"UI": "./resources/eclipse.jdt.ui"}
