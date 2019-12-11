@@ -1,21 +1,14 @@
 # BugTriageEclipseHighConfidence
 
-## Dependencies 
+Add abstract
 
-To setup python and install the ibraries and prepare the dataset, please refer to [install](https://github.com/CESEL/BugTriageEclipseHighConfidence/blob/master/install.md)
+Link to ICSME version and to thesis
 
-The code runs with Python 3.7. It has dependency on the following libraries -
-1. GitPython
-2. PyDriller
-3. nltk
-4. numpy
-5. pandas
-6. python-bugzilla
-7. python-dateutil
-8. scikit-learn
-9. scipy
+## Install and Dependencies 
 
-## Results
+To setup python and install the libraries and prepare the dataset, please refer to [install](https://github.com/CESEL/BugTriageEclipseHighConfidence/blob/master/install.md)
+
+## Generating the Results
 
 To run the models and get the results, please refer to [run models](https://github.com/CESEL/BugTriageEclipseHighConfidence/blob/master/run_models.md)
 
