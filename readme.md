@@ -19,7 +19,7 @@ that only triages bugs when the model has high confidence in the triage predicti
 improve the accuracy to 90% at Ericsson and 70% at Eclipse, but we can make predictions for 62%
 and 25% of the total Ericsson and Eclipse bug reports,respectively.
 
-For more details please refer to [ICSME paper](https://ieeexplore.ieee.org/abstract/document/8919115) [Thesis on Bug Triaging](https://drive.google.com/drive/folders/17_gunoWnzVakZzJzVfkTfvSkf1ADbd_q)
+For more details please refer to [ICSME paper](https://ieeexplore.ieee.org/abstract/document/8919115) and [Thesis on Bug Triaging](https://drive.google.com/drive/folders/17_gunoWnzVakZzJzVfkTfvSkf1ADbd_q)
 
 ## Install and Dependencies 
 
