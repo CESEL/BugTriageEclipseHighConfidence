@@ -1,8 +1,25 @@
 # BugTriageEclipseHighConfidence
 
-Add abstract
+Correctly assigning bugs to the right developer or team, i.e., bug triaging, is a costly activity. A
+concerted effort at Ericsson has been done to adopt automated bug triaging to reduce development
+costs. We also perform a case study on Eclipse bug reports. In this work, we replicate the research
+approaches that have been widely used in the literature including FixerCache. We apply them on
+over 10k bug reports for 9 large products at Ericsson and 2 large Eclipse products containing 21
+components. We find that a logistic regression classifier including simple textual and categorical
+attributes of the bug reports has the highest accuracy of 79.00% and 46% on Ericsson and Eclipse
+bug reports respectively.
+Ericsson’s bug reports often contain logs that have crash dumps and alarms. We add this information
+to the bug triage models. We find that this information does not improve the accuracy of bug
+triaging in Ericsson’s context. Eclipse bug reports contain the stack traces that we add to the bug
+triaging model. Stack traces are only present in 8% of bug reports and do not improve the triage
+accuracy.
+Although our models perform as well as the best ones reported in the literature, a criticism of bug
+triaging at Ericsson is that accuracy is not sufficient for regular use. We develop a novel approach
+that only triages bugs when the model has high confidence in the triage prediction. We find that we
+improve the accuracy to 90% at Ericsson and 70% at Eclipse, but we can make predictions for 62%
+and 25% of the total Ericsson and Eclipse bug reports,respectively.
 
-Link to ICSME version and to thesis
+For more details please refer to [ICSME paper](https://ieeexplore.ieee.org/abstract/document/8919115) [Thesis on Bug Triaging](https://drive.google.com/drive/folders/17_gunoWnzVakZzJzVfkTfvSkf1ADbd_q)
 
 ## Install and Dependencies 
 
